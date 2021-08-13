@@ -43,10 +43,12 @@ jobs:
         
     - name: Pull Image, Run Container
       uses: appleboy/ssh-action@v0.1.4
+      env:
+        TARGET_IMAGE: ${{ steps.build-image.outputs.image }}
       with:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          ls -l
+          docker pull $TARGET_IMAGE
