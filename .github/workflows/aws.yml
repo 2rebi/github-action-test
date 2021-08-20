@@ -55,7 +55,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,TARGET_IMAGE
         script: |
-          export AWS_REGION=$AWS_DEFAULT_REGION
           env
-          eval $(aws ecr get-login-password)
-          docker pull $TARGET_IMAGE
